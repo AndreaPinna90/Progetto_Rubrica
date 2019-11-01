@@ -52,11 +52,11 @@ typedef struct {
 } Contatto;
 
 void acquisisciContatto (Contatto persona);//certe condizioni input da rivedere
-void acquisisciNome (Contatto persona);
-void acquisisciCognome (Contatto persona);
-void acquisisciNumero (Contatto persona);
-void acquisisciEmail (Contatto persona);
-void acquisisciTipo (Contatto persona);
+void modNome (Contatto persona);
+void modCognome (Contatto persona);
+void modNumero (Contatto persona);
+void modEmail (Contatto persona);
+void modTipo (Contatto persona);
 void stampaContatto (Contatto persona);
 void modificaContatto (Contatto persona);
 int vettoreDinamico (Contatto persona);
@@ -64,7 +64,7 @@ int vettoreDinamico (Contatto persona);
 int main() {
     Contatto Andrea;
 
-    acquisisciContatto(Andrea);
+    modificaContatto(Andrea);
 
     return 0;
 }
@@ -125,10 +125,10 @@ void acquisisciContatto (Contatto persona){
 
     stampaContatto(persona);
 }
-void acquisisciNome (Contatto persona){
+void modNome (Contatto persona){
     int i;
 
-    printf("\nNome:");
+    printf("\nNuovo Nome:");
     scanf("%s", persona.nome);
     getchar();
 
@@ -139,10 +139,12 @@ void acquisisciNome (Contatto persona){
             getchar();
         }
     }
+    printf("\nModifica eseguita con successo.");
+    printf("\nNome: %s", persona.nome);
 }
-void acquisisciCognome (Contatto persona){
+void modCognome (Contatto persona){
     int i;
-    printf("\nCognome:");
+    printf("\nNuovo Cognome:");
     scanf("%s", persona.cognome);
     getchar();
 
@@ -153,10 +155,12 @@ void acquisisciCognome (Contatto persona){
             getchar();
         }
     }
+    printf("\nModifica eseguita con successo.");
+    printf("\nCognome: %s", persona.cognome);
 }
-void acquisisciNumero (Contatto persona){
+void modNumero (Contatto persona){
     int i;
-    printf("\nNumero:");
+    printf("\nNuovo Numero:");
     scanf("%s", persona.numeroDiTelefono);
     getchar();
 
@@ -167,10 +171,12 @@ void acquisisciNumero (Contatto persona){
             getchar();
         }
     }
+    printf("\nModifica eseguita con successo.");
+    printf("\nNumero: %s", persona.numeroDiTelefono);
 }
-void acquisisciEmail (Contatto persona){
+void modEmail (Contatto persona){
     int i;
-    printf("\nEmail:");
+    printf("\nNuova Email:");
     scanf("%s", persona.email);
     getchar();
 
@@ -181,11 +187,15 @@ void acquisisciEmail (Contatto persona){
             getchar();
         }
     }
+    printf("\nModifica eseguita con successo.");
+    printf("\n\nEmail: %s", persona.email);
 }
-void acquisisciTipo (Contatto persona){
-    printf("\nTipo Contatto:[0=LAVORO, 1=FAMIGLIA, 2=AMICI, 3=ALTRI]");
+void modTipo (Contatto persona){
+    printf("\nNuovo Tipo Contatto:[0=LAVORO, 1=FAMIGLIA, 2=AMICI, 3=ALTRI]");
     scanf("%d", &persona.tipologiaContatto);
     getchar();
+    printf("\nModifica eseguita con successo.");
+    printf("\nTipo: %d", persona.tipologiaContatto);
 }
 void stampaContatto (Contatto persona){
     printf("\n\nNome: %s", persona.nome);
@@ -216,32 +226,28 @@ void modificaContatto (Contatto persona){
 
     switch (scelta) {
         case 1:
-            acquisisciNome(persona);
+            modNome(persona);
             break;
 
         case 2:
-            acquisisciCognome(persona);
+            modCognome(persona);
             break;
 
         case 3:
-            acquisisciNumero(persona);
+            modNumero(persona);
             break;
 
         case 4:
-            acquisisciEmail(persona);
+            modEmail(persona);
             break;
 
         case 5:
-            acquisisciTipo(persona);
+            modTipo(persona);
             break;
 
         default:
             printf("\nScelta non consentita. Non è stata apportata alcuna modifica.");
-
     }
-    printf("\nModifica eseguita con successo.");
-    stampaContatto(persona);
-
 }
 int vettoreDinamico (Contatto persona){
     Contatto *a = NULL;
